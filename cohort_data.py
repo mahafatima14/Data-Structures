@@ -19,10 +19,10 @@ def all_houses(filename):
 
     cohort_data = open(filename)
     for line in cohort_data:
-      line = line.rstrip()
-      student_data = line.split("|")
-      house = student_data[2]
-      if house != "":
+      line = line.rstrip() # remove right white space
+      student_data = line.split("|") # split each line by |
+      house = student_data[2] # assign house to data at index 2
+      if house != "": # if house is not blank, add house to set
         houses.add(house)
 
     return houses
@@ -58,7 +58,21 @@ def students_by_cohort(filename, cohort="All"):
 
     students = []
 
-    # TODO: replace this with your code
+    cohort_data = open(filename)
+    for line in cohort_data:
+      line = line.rstrip() # remove right white space
+      student_data = line.split("|") # split each line by |
+      first_name = student_data[0] # assign first name variable
+      last_name = student_data[1] # assign last name variable
+      full_name = f"{first_name} {last_name}" # assign full name variable
+
+      if cohort == "All":
+        if student_data[4] != "I" and student_data[4] != "G":
+          students.append(full_name)
+      else:
+        if cohort == student_data[4]:
+          students.append(full_name)
+
 
     return sorted(students)
 
