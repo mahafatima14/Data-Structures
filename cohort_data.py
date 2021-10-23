@@ -17,7 +17,13 @@ def all_houses(filename):
 
     houses = set()
 
-    # TODO: replace this with your code
+    cohort_data = open(filename)
+    for line in cohort_data:
+      line = line.rstrip()
+      student_data = line.split("|")
+      house = student_data[2]
+      if house != "":
+        houses.add(house)
 
     return houses
 
