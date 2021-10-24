@@ -162,7 +162,17 @@ def all_data(filename):
 
     all_data = []
 
-    # TODO: replace this with your code
+    cohort_data = open(filename)
+    for line in cohort_data:
+      line = line.rstrip() # remove right white space
+      student_data = line.split("|") # split each line by |
+      first_name = student_data[0] # assign first name variable
+      last_name = student_data[1] # assign last name variable
+      full_name = f"{first_name} {last_name}" # assign full name variable
+      house = student_data[2]
+      advisor = student_data[3]
+      cohort = student_data[4]
+      all_data.append((full_name, house, advisor, cohort))
 
     return all_data
 
