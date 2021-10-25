@@ -18,11 +18,11 @@ def all_houses(filename):
     houses = set()
 
     cohort_data = open(filename)
-    for line in cohort_data:
-      line = line.rstrip() # remove right white space
-      student_data = line.split("|") # split each line by |
-      house = student_data[2] # assign house to data at index 2
-      if house != "": # if house is not blank, add house to set
+    for line in cohort_data:                          #iterate over each line in the filecd
+      line = line.rstrip()                            #remove right white space
+      student_data = line.split("|")                  #split each line by |
+      house = student_data[2]                         #assign house to data at index 2
+      if house != "":                                 #if house is not blank, add house to set
         houses.add(house)
 
     return houses
@@ -60,11 +60,11 @@ def students_by_cohort(filename, cohort="All"):
 
     cohort_data = open(filename)
     for line in cohort_data:
-      line = line.rstrip() # remove right white space
-      student_data = line.split("|") # split each line by |
-      first_name = student_data[0] # assign first name variable
-      last_name = student_data[1] # assign last name variable
-      full_name = f"{first_name} {last_name}" # assign full name variable
+      line = line.rstrip()                              #remove right white space
+      student_data = line.split("|")                    #split each line by |
+      first_name = student_data[0]                      #assign first name variable
+      last_name = student_data[1]                       #assign last name variable
+      full_name = f"{first_name} {last_name}"           #assign full name variable
 
       if cohort == "All":
         if student_data[4] != "I" and student_data[4] != "G":
@@ -221,8 +221,22 @@ def find_duped_last_names(filename):
     Return:
       - set[str]: a set of strings
     """
+    all_last_names = []
+    duplicate_last_names = set()
 
-    # TODO: replace this with your code
+    cohort_data = open(filename)
+    for line in cohort_data:
+      line = line.rstrip() # remove right white space
+      student_data = line.split("|") # split each line by |
+      last_name = student_data[1] # assign last name variable
+
+      if last_name not in all_last_names:
+        all_last_names.append(last_name)
+      else:
+        duplicate_last_names.add(last_name)
+
+    return duplicate_last_names
+
 
 
 def get_housemates_for(filename, name):
